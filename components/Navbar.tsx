@@ -213,12 +213,12 @@ function NavItem({
   return (
     <Link
       href={href}
-      classNameName={`${baseClassNaclassNamees} ${
+      className={`${baseClassNaclassNamees} ${
         mobile ? mobileClassNaclassNamees : desktopClassNaclassNamees
       }`}
     >
       {icon}
-      <span classNameName={mobile ? "ml-2" : "ml-1"}>{children}</span>
+      <span className={mobile ? "ml-2" : "ml-1"}>{children}</span>
     </Link>
   );
 }
@@ -230,29 +230,29 @@ function MobileServicesDropdown() {
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        classNameName="text-primary-foreground hover:text-secondary transition-colors duration-300 flex items-center w-full py-2 hover:border-l-4 hover:border-secondary pl-2"
+        className="text-primary-foreground hover:text-secondary transition-colors duration-300 flex items-center w-full py-2 hover:border-l-4 hover:border-secondary pl-2"
       >
         <Briefcase size={18} />
-        <span classNameName="ml-2">Services</span>
-        <ChevronDown size={16} classNameName="ml-auto" />
+        <span className="ml-2">Services</span>
+        <ChevronDown size={16} className="ml-auto" />
       </button>
       {isOpen && (
-        <div classNameName="pl-6 py-2 space-y-2">
+        <div className="pl-6 py-2 space-y-2">
           <Link
             href="/services/web-development"
-            classNameName="block text-primary-foreground hover:text-secondary"
+            className="block text-primary-foreground hover:text-secondary"
           >
             Web Development
           </Link>
           <Link
             href="/services/mobile-apps"
-            classNameName="block text-primary-foreground hover:text-secondary"
+            className="block text-primary-foreground hover:text-secondary"
           >
             Mobile Apps
           </Link>
           <Link
             href="/services/cloud-solutions"
-            classNameName="block text-primary-foreground hover:text-secondary"
+            className="block text-primary-foreground hover:text-secondary"
           >
             Cloud Solutions
           </Link>
