@@ -15,13 +15,13 @@ export default function EducationalPlatforms() {
     {
       name: "Coursera",
       description:
-        "the global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.",
+        "The global online learning platform that offers anyone, anywhere access to online courses and degrees from world-class universities and companies.",
       imageSrc: "/coursera-svgrepo-com.svg",
     },
     {
       name: "SkillShare",
       description:
-        "a learning community for creators. Anyone can take an online class, watch video lessons, create projects, and even teach a class themselves.",
+        "A learning community for creators. Anyone can take an online class, watch video lessons, create projects, and even teach a class themselves.",
       imageSrc: "/skillshare-seeklogo.svg",
     },
   ];
