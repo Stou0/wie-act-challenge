@@ -62,7 +62,7 @@ const StudentZone = () => {
     {
       title: "My Journey in Computer Science",
       speaker: "Wejden Haggi",
-      thumbnailSrc: "/wejden.MP4",
+      thumbnailSrc: "/wejden.mp4",
       videoLink: "#",
     },
     {
