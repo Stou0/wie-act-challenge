@@ -61,13 +61,13 @@ const StudentZone = () => {
   const guidanceVideos = [
     {
       title: "My Journey in Computer Science",
-      speaker: "Emma Rodriguez",
+      speaker: "Wejden Haggi",
       thumbnailSrc: "/wejden.MP4",
       videoLink: "#",
     },
     {
       title: "Exploring Biomedical Engineering",
-      speaker: "Michael Chen",
+      speaker: "Asma Guiza",
       thumbnailSrc: "/asma.mp4",
       videoLink: "#",
     },
@@ -228,9 +228,8 @@ const StudentZone = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {video.title}
+                    Speaker: {video.speaker}
                   </h3>
-                  <p className="text-gray-600 mb-4">Speaker: {video.speaker}</p>
                 </div>
               </div>
             ))}
