@@ -5,10 +5,8 @@ import ChatbotComponent from "@/components/designed-chatbot-component";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <ChatbotComponent />
-      <Footer />
     </>
   );
 }

@@ -69,8 +69,6 @@ const StudentZone = () => {
   ];
 
   return (
-    <div>
-      <Navbar/>
    
     <div className="bg-white">
       {/* Header Quote Section */}
@@ -223,8 +221,6 @@ const StudentZone = () => {
           </div>
         </div>
       </section>
-    </div>
-    <Footer/>
     </div>
   );
 };
