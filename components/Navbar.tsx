@@ -58,7 +58,7 @@ export function Navbar() {
             Teacher Zone
             </span> 
           </NavItem>
-          <NavItem href="/about" icon={<Info size={18} />}>
+          <NavItem href="/working" icon={<Info size={18} />}>
            <span className="text-black">
             Student Zone
             </span> 
