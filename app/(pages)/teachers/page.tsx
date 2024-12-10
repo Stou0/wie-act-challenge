@@ -35,7 +35,7 @@ export default function EducationalPlatforms() {
       </header>
 
       <main>
-        <div className="bg-orange-400 text-white py-2 px-4 mb-4">
+        <div className="bg-purple-500 text-white py-2 px-4 mb-4">
           <h2 className="text-xl font-semibold">Teaching platforms</h2>
         </div>
         <p className="mb-6 text-center">
