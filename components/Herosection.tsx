@@ -7,6 +7,7 @@ import { ArrowRight, Star, NetworkIcon, BookOpen, Calendar } from "lucide-react"
 
 export default function WIESTARLanding() {
   const [activeEvent, setActiveEvent] = useState('WIEmpowerHer1.0');
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const events = [
     {
@@ -14,33 +15,34 @@ export default function WIESTARLanding() {
       title: 'WIEmpowerHer 1.0',
       date: 'December 2023',
       location: 'Manzel nour junior high school',
-      description: 'A pivotal event aimed at empowering young women in rural areas in engineering and technology.',
+      description: 'WIEmpowerHer 1.0 was a pivotal event that took place in December 2023 in “Manzel nour junior high school”, with the goal of empowering young women in rural areas in engineering and technology.Impact: WIE EmpowerHer 1.0 successfully combined educational content with practical experiences, ensuring that attendees not only gained technical knowledge but also enhanced their personal and professional skills. The event empowered young women to break barriers, take on leadership roles in STEM, and pursue their passions with confidence. '+
+      'The combination of IoT, robotics, pitching, and soft skills sessions created a well-rounded experience, catering to both the technical and personal development of participants.',
       activities: [
         '3 soft skills sessions',
         'Robotics session',
         'IoT session',
         'Pitching competition'
       ],
-      images: ['/api/placeholder/400/300', '/api/placeholder/400/300']
+      images: ['/wie1.jpg', '/wie2.jpg', '/wie5.jpg', '/wie6.jpg']
     },
     {
       id: 'WIEmpowerHer2.0',
       title: 'WIEmpowerHer 2.0',
-      date: 'Coming Soon',
+      date: 'December 5th, 2024',
       location: 'To be announced',
-      description: 'Building on the success of our first event, WIEmpowerHer 2.0 continues to inspire and empower young women in STEM.',
+      description: 'Building on the success of our first event, WIEmpowerHer 2.0 continues to inspire and empower young women in STEM. WIEmpowerHer  was an event that took place in December 2024 in “Ferchiou ”, with the goal of empowering young studnets to pursue their career in stem fields',
       activities: [
         'Advanced technical workshops',
         'Mentorship programs',
         'Innovation challenges',
         'Career development sessions'
       ],
-      images: ['/api/placeholder/400/300', '/api/placeholder/400/300']
+      images: ['/wie3.jpg', '/wie4.jpg', '/wie7.jpg', '/wie8.jpg'] 
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Hero Banner */}
       <div className="relative min-h-[50vh] flex items-center justify-center text-center">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-600 opacity-10" />
@@ -130,7 +132,7 @@ export default function WIESTARLanding() {
               variant="default" 
               className="bg-purple-600 hover:bg-purple-700 text-white group"
             >
-              Learn More 
+              <a href="https://wie.ieee.org/membership/outreach/"  > Learn More </a>
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </motion.div>
@@ -142,7 +144,7 @@ export default function WIESTARLanding() {
             className="flex justify-center"
           >
             <img 
-              src="/api/placeholder/500/500" 
+              src="/logo_wiestar.png" 
               alt="WIE STAR Program" 
               className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
             />
@@ -166,7 +168,10 @@ export default function WIESTARLanding() {
                   ? 'bg-purple-600 text-white' 
                   : 'text-purple-600 border-purple-600'
                 }`}
-                onClick={() => setActiveEvent(event.id)}
+                onClick={() => {
+                  setActiveEvent(event.id);
+                  setActiveImageIndex(0); // Reset image index when changing event
+                }}
               >
                 {event.title}
               </Button>
@@ -197,15 +202,31 @@ export default function WIESTARLanding() {
                     ))}
                   </ul>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  {event.images.map((image, index) => (
-                    <img 
-                      key={index}
-                      src={image} 
-                      alt={`${event.title} event ${index + 1}`}
-                      className="rounded-lg shadow-md hover:scale-105 transition-transform"
-                    />
-                  ))}
+                <div>
+                  {/* Main Image Display */}
+                  <motion.img 
+                    key={event.images[activeImageIndex]}
+                    src={event.images[activeImageIndex]} 
+                    alt={`${event.title} event ${activeImageIndex + 1}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    className="rounded-lg shadow-md w-full h-[400px] object-cover mb-4"
+                  />
+                  
+                  {/* Image Thumbnails */}
+                  <div className="grid grid-cols-4 gap-2">
+                    {event.images.map((image, index) => (
+                      <img 
+                        key={index}
+                        src={image} 
+                        alt={`Thumbnail ${index + 1}`}
+                        onClick={() => setActiveImageIndex(index)}
+                        className={`rounded-lg shadow-md cursor-pointer hover:opacity-75 transition-opacity 
+                          ${index === activeImageIndex ? 'border-4 border-purple-600' : ''}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )
