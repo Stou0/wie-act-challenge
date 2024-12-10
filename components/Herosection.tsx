@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, NetworkIcon, BookOpen, Calendar } from "lucide-react";
+import Image from "next/image";
 
 export default function WIESTARLanding() {
   const [activeEvent, setActiveEvent] = useState('WIEmpowerHer1.0');
@@ -23,7 +24,7 @@ export default function WIESTARLanding() {
         'IoT session',
         'Pitching competition'
       ],
-      images: ['/wie1.jpg', '/wie2.jpg', '/wie5.jpg', '/wie6.jpg']
+      images: ['/wie1.JPG', '/wie2.JPG', '/wie5.JPG', '/wie6.JPG']
     },
     {
       id: 'WIEmpowerHer2.0',
@@ -37,7 +38,7 @@ export default function WIESTARLanding() {
         'Innovation challenges',
         'Career development sessions'
       ],
-      images: ['/wie3.jpg', '/wie4.jpg', '/wie7.jpg', '/wie8.jpg'] 
+      images: ['/wie3.JPG', '/wie4.JPG', '/wie7.JPG', '/wie8.JPG'] 
     }
   ];
 
@@ -143,10 +144,12 @@ export default function WIESTARLanding() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex justify-center"
           >
-            <img 
+            <Image
               src="/logo_wiestar.png" 
               alt="WIE STAR Program" 
               className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
+              width={300}
+              height={200}
             />
           </motion.div>
         </div>
@@ -217,9 +220,11 @@ export default function WIESTARLanding() {
                   {/* Image Thumbnails */}
                   <div className="grid grid-cols-4 gap-2">
                     {event.images.map((image, index) => (
-                      <img 
+                      <Image 
                         key={index}
                         src={image} 
+                        width={300}
+                        height={200}
                         alt={`Thumbnail ${index + 1}`}
                         onClick={() => setActiveImageIndex(index)}
                         className={`rounded-lg shadow-md cursor-pointer hover:opacity-75 transition-opacity 
