@@ -1,222 +1,262 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
-import { X } from "lucide-react";
-import { ModernVideoSectionComponent } from "@/components/about/modern-video-section";
-import Feedback from "@/components/feedback";
-import { ClientFeedbackComponent } from "@/components/Clientfeedback";
-import Link from "next/link";
-import Image from "next/image";
-import ReactPlayer from "react-player";
+import { ArrowRight, Star, NetworkIcon, BookOpen, Calendar } from "lucide-react";
 
-const cubeContent = [
-  {
-    title: "Innovate",
-    description: "Push boundaries with cutting-edge solutions",
-    imageUrl: "image1.jpg",
-  },
-  {
-    title: "Create",
-    description: "Bring your ideas to life with powerful tools",
-    imageUrl: "image5.jpg",
-  },
-  {
-    title: "Collaborate",
-    description: "Work seamlessly with teams across the globe",
-    imageUrl: "image4.jpg",
-  },
-  {
-    title: "Accelerate",
-    description: "Supercharge your workflow and productivity",
-    imageUrl: "image3.jpg",
-  },
-];
+export default function WIESTARLanding() {
+  const [activeEvent, setActiveEvent] = useState('WIEmpowerHer1.0');
 
-export default function HeroSection() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      rotateToNext();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [currentIndex]);
-
-  const rotateToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % cubeContent.length);
-  };
+  const events = [
+    {
+      id: 'WIEmpowerHer1.0',
+      title: 'WIEmpowerHer 1.0',
+      date: 'December 2023',
+      location: 'Manzel nour junior high school',
+      description: 'A pivotal event aimed at empowering young women in rural areas in engineering and technology.',
+      activities: [
+        '3 soft skills sessions',
+        'Robotics session',
+        'IoT session',
+        'Pitching competition'
+      ],
+      images: ['/api/placeholder/400/300', '/api/placeholder/400/300']
+    },
+    {
+      id: 'WIEmpowerHer2.0',
+      title: 'WIEmpowerHer 2.0',
+      date: 'Coming Soon',
+      location: 'To be announced',
+      description: 'Building on the success of our first event, WIEmpowerHer 2.0 continues to inspire and empower young women in STEM.',
+      activities: [
+        'Advanced technical workshops',
+        'Mentorship programs',
+        'Innovation challenges',
+        'Career development sessions'
+      ],
+      images: ['/api/placeholder/400/300', '/api/placeholder/400/300']
+    }
+  ];
 
   return (
-    <div>
-      <div className="relative min-h-screen flex bg-gradient-to-br from-purple-800 to-pink-900 bg-fixed">
-        <div className="absolute inset-0 bg-black opacity-50" />
-
-        <div className="relative w-full flex-1 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src={`/${cubeContent[currentIndex].imageUrl}`} // Ensure the path starts with a leading slash
-                alt={cubeContent[currentIndex].title}
-                width={1920}
-                height={1080}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 flex items-center justify-center p-8 bg-black bg-opacity-50">
-                <div
-                  className="text-center text-white"
-                  style={{ marginLeft: "40%", marginBottom: "10%" }}
-                >
-                  <h2 className="text-6xl font-bold mb-4">
-                    {cubeContent[currentIndex].title}
-                  </h2>
-                  <p className="text-2xl">
-                    {cubeContent[currentIndex].description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="absolute top-0 left-0 w-1/2 h-full flex flex-col justify-center items-start p-8 bg-transparent">
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-extrabold text-white leading-tight mb-6">
-            Next Step <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-              Digital Safety
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50 flex flex-col">
+      {/* Hero Banner */}
+      <div className="relative min-h-[50vh] flex items-center justify-center text-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-400 to-pink-600 opacity-10" />
+        <div className="relative z-10 px-4">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 text-8xl">
+              Tomorrow's Innovators
             </span>
           </h1>
-          <p className="text-2xl text-gray-300 mb-8">
-            Together, we can create a safer digital world for all women.
+          <p className="text-3xl text-gray-700 mb-8">
+            We motivate, we empower, we educate. Together we make the change.
+            
           </p>
-          <div className="flex space-x-4">
-            <Link href="/working">
-              <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-6 px-7 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                Download extension
+        </div>
+      </div>
+
+      {/* IEEE and WIE Definitions */}
+      <div className="container mx-auto px-4 py-16 bg-white">
+        <div className="grid md:grid-cols-2 gap-12">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center space-x-4">
+              <BookOpen className="text-purple-600 w-12 h-12" />
+              <h2 className="text-4xl font-bold text-gray-900">IEEE</h2>
+            </div>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              The Institute of Electrical and Electronics Engineers (IEEE) is the world's largest technical professional organization dedicated to advancing technology for the benefit of humanity.
+            </p>
+            <p className="text-lg text-gray-600">
+              Founded in 1963, IEEE is a leading authority in a wide variety of areas ranging from aerospace systems, computers and telecommunications to biomedical engineering, electric power, and consumer electronics.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center space-x-4">
+              <NetworkIcon className="text-purple-600 w-12 h-12" />
+              <h2 className="text-4xl font-bold text-gray-900">WIE</h2>
+            </div>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              IEEE Women in Engineering (WIE) is a global network of IEEE members and volunteers dedicated to promoting women engineers and scientists.
+            </p>
+            <p className="text-lg text-gray-600 italic">
+              Mission: To inspire, empower, and support women in technological fields, breaking down barriers and creating opportunities for women in engineering and science.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* WIE STAR Program */}
+      <div className="container mx-auto px-4 py-16 flex-grow flex items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <div className="flex items-center space-x-4">
+              <Star className="text-purple-600 w-12 h-12" />
+              <h2 className="text-4xl font-bold text-gray-900">
+                WIE STAR Program
+              </h2>
+            </div>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              The IEEE Student-Teacher and Research Engineer/Scientist (STAR) Program is a transformative initiative designed to inspire and empower young girls to pursue careers in STEM.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <NetworkIcon className="text-purple-500 w-6 h-6" />
+                <span className="text-gray-800">Encouraging girls in mathematics, science, and engineering</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <Star className="text-purple-500 w-6 h-6" />
+                <span className="text-gray-800">Breaking barriers and challenging stereotypes</span>
+              </div>
+            </div>
+            <Button 
+              variant="default" 
+              className="bg-purple-600 hover:bg-purple-700 text-white group"
+            >
+              Learn More 
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <img 
+              src="/api/placeholder/500/500" 
+              alt="WIE STAR Program" 
+              className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
+            />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* WIEmpowerHer Events */}
+      <div className="bg-purple-50 py-16">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            WIEmpowerHer Events
+          </h3>
+          <div className="flex justify-center mb-8">
+            {events.map((event) => (
+              <Button
+                key={event.id}
+                variant={activeEvent === event.id ? 'default' : 'outline'}
+                className={`mr-4 ${
+                  activeEvent === event.id 
+                  ? 'bg-purple-600 text-white' 
+                  : 'text-purple-600 border-purple-600'
+                }`}
+                onClick={() => setActiveEvent(event.id)}
+              >
+                {event.title}
               </Button>
-            </Link>
-            <CreativeVideoButton onClick={() => setIsVideoModalOpen(true)} />
+            ))}
+          </div>
+
+          {events.map((event) => (
+            activeEvent === event.id && (
+              <motion.div
+                key={event.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="grid md:grid-cols-2 gap-8"
+              >
+                <div>
+                  <div className="flex items-center mb-4">
+                    <Calendar className="mr-3 text-purple-600" />
+                    <span className="text-xl font-semibold text-gray-800">{event.date}</span>
+                  </div>
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">{event.title}</h4>
+                  <p className="text-gray-700 mb-4">{event.description}</p>
+                  
+                  <h5 className="text-xl font-semibold text-gray-900 mb-2">Activities:</h5>
+                  <ul className="list-disc list-inside text-gray-700">
+                    {event.activities.map((activity, index) => (
+                      <li key={index}>{activity}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {event.images.map((image, index) => (
+                    <img 
+                      key={index}
+                      src={image} 
+                      alt={`${event.title} event ${index + 1}`}
+                      className="rounded-lg shadow-md hover:scale-105 transition-transform"
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            )
+          ))}
+        </div>
+      </div>
+
+      {/* Mission Section */}
+      <div className="bg-white py-16">
+        <div className="container mx-auto px-4">
+          <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            Our Mission
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <NetworkIcon className="w-12 h-12 text-purple-600" />,
+                title: "Inspire",
+                description: "Motivate young women to explore STEM fields"
+              },
+              {
+                icon: <Star className="w-12 h-12 text-purple-600" />,
+                title: "Educate",
+                description: "Provide resources and support for learning"
+              },
+              {
+                icon: <ArrowRight className="w-12 h-12 text-purple-600" />,
+                title: "Empower",
+                description: "Create pathways for future technological leaders"
+              }
+            ].map((item, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                className="bg-purple-50 p-6 rounded-xl shadow-md hover:shadow-xl transition-all text-center"
+              >
+                <div className="flex justify-center mb-4">
+                  {item.icon}
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-gray-900">
+                  {item.title}
+                </h4>
+                <p className="text-gray-700">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
-
-        <VideoModal
-          isOpen={isVideoModalOpen}
-          onClose={() => setIsVideoModalOpen(false)}
-          videoUrl="https://www.youtube.com/watch?v=uh6j60dwyH8"
-        />
-      </div>
-
-      {/* Services(extension) Section */}
-      <div className="py-16 px-8 bg-gray-900 flex flex-col lg:flex-row items-center justify-between">
-        <div className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
-          <h2 className="text-4xl font-bold mb-4 text-white">
-            Experience Our{" "}
-            <span className="text-transparent text-bold bg-clip-text bg-gradient-to-r from-red-400 to-blue-600">
-              Vision
-            </span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-2xl">
-            Watch our demo video to see how to use our extension.
-          </p>
-          <p className="text-left text-xl max-w-2xl text-white">
-            Our Extension service helps you safeguard your online presence,
-            offering tools to monitor, prevent, and react to digital threats.
-            Whether you&apos;re concerned about privacy, security, or managing
-            digital interactions, we&apos;ve got you covered.
-          </p>
-          <div className="flex justify-start mt-8">
-            <Link href="/services/extension">
-              <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-white py-3 px-6 rounded-full">
-                Learn More
-              </Button>
-            </Link>
-          </div>
-        </div>
-
-        <div className="lg:w-1/2">
-          <ModernVideoSectionComponent />
-        </div>
-      </div>
-
-      {/* Feedback Section */}
-      <div className="py-16 px-8 bg-gray-900">
-        <h2 className="text-4xl font-bold text-center mb-4 text-white">
-          Your Feedback Matters
-        </h2>
-        <p className="text-center text-xl max-w-2xl mx-auto text-gray-200 mb-8">
-          Your feedback helps us improve our service and deliver the best
-          experience possible. Please take a moment to share your thoughts with
-          us!
-        </p>
-
-        <div className="relative">
-          <Feedback />
-        </div>
-
-        <div>
-          <ClientFeedbackComponent />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CreativeVideoButton({ onClick }: { onClick: () => void }) {
-  return (
-    <div className="from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold">
-      <button
-        onClick={onClick}
-        className="group relative overflow-hidden bg-white/10 hover:bg-white/20 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl backdrop-blur-sm"
-      >
-        <span className="relative z-10 flex items-center">
-          <Play className="w-5 h-5 mr-2" />
-          Watch Video
-        </span>
-      </button>
-    </div>
-  );
-}
-
-function VideoModal({
-  isOpen,
-  onClose,
-  videoUrl,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-  videoUrl: string;
-}) {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div className="relative w-full max-w-3xl">
-        {/* Button to close the modal */}
-        <Button
-          className="absolute top-2 right-2 z-50 text-white p-2 rounded-full hover:bg-gray-800 transition-all duration-300"
-          onClick={onClose} // Make sure the onClose is bound correctly
-        >
-          <X className="w-6 h-6" />
-        </Button>
-
-        {/* Video player */}
-        <ReactPlayer
-          url={videoUrl}
-          playing
-          width="100%"
-          height="500px"
-          className="rounded-lg shadow-lg"
-        />
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-t from-indigo-900 via-indigo-800 to-gray-700 p-4">
+    <nav className="bg-white p-4">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" aria-label="Go to homepage">
           <Image
@@ -49,16 +49,29 @@ export function Navbar() {
         {/* Desktop menu */}
         <div className="hidden md:flex space-x-8 items-center">
           <NavItem href="/" icon={<Home size={18} />}>
+           <span className="text-black	"> 
             Home
+            </span> 
           </NavItem>
-          <ServicesDropdown />
           <NavItem href="/about" icon={<Info size={18} />}>
-            About
+           <span className="text-black	">
+            Teacher Zone
+            </span> 
           </NavItem>
-          <Link href="/contact" className="w-full">
+          <NavItem href="/about" icon={<Info size={18} />}>
+           <span className="text-black">
+            Student Zone
+            </span> 
+          </NavItem>
+          <NavItem href="/about" icon={<Info size={18} />}>
+           <span className="text-black ">
+            About
+            </span> 
+          </NavItem>
+          <Link href="/contact" className="w-full ">
             <Button
               variant="secondary"
-              className="w-full hover:border-2 hover:border-secondary transition-all duration-300"
+              className="w-full hover:border-2 hover:border-secondary transition-all duration-300 "
             >
               <Phone size={18} className="mr-2" />
               Contact Us
@@ -69,7 +82,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden mt-2">
+        <div className="md:hidden mt-2 text-black	">
           <NavItem href="/" icon={<Home size={18} />} mobile>
             Home
           </NavItem>
@@ -108,7 +121,7 @@ function NavItem({
   const mobileClasses =
     "block py-2 hover:border-l-4 hover:border-secondary pl-2";
   const desktopClasses =
-    "inline-flex hover:border-b-2 hover:border-secondary pb-1";
+    "inline-flex hover:border-b-2 hover:border-secondary pb-1 ";
 
   return (
     <Link
@@ -121,24 +134,6 @@ function NavItem({
   );
 }
 
-function ServicesDropdown() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="text-primary-foreground hover:text-secondary transition-colors duration-300 flex items-center hover:border-b-2 hover:border-secondary pb-1">
-        <Briefcase size={18} />
-        <span className="ml-1">Services</span>
-        <ChevronDown size={16} className="ml-1" />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Link href="/working" className="flex items-center">
-            Extension
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
 
 function MobileServicesDropdown() {
   const [isOpen, setIsOpen] = useState(false);
