@@ -26,9 +26,11 @@ export default function EducationalPlatforms() {
     },
   ];
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <header className="text-center mb-8">
-        <h1 className="text-3xl font-bold mb-2">
+    <div className="bg-gradient-to-br from-purple-50 to-pink-50 ">
+
+    <div className="max-w-4xl mx-auto px-4 py-8 ">
+      <header className="text-center mb-8  py-16 px-4">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 text-5xl">
           "Education is not preparation for life; education is life itself." -
           John Dewey
         </h1>
@@ -50,18 +52,19 @@ export default function EducationalPlatforms() {
               name={platform.name}
               description={platform.description}
               imageSrc={platform.imageSrc}
-            />
+              />
           ))}
         </div>
       </main>
     </div>
+</div>
   );
 }
 
 function PlatformCard({
-  name,
-  description,
-  imageSrc,
+    name,
+    description,
+    imageSrc,
 }: {
   name: string;
   description: string;

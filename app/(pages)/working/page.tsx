@@ -29,7 +29,7 @@ const StudentZone = () => {
       instructor: "Mr. Louay Jabeur",
       meetLink: "https://meet.google.com/another-link",
       description:
-        "Dive into the world of artificial intelligence and explore its practical applications in modern technology.",
+        "Explore the fundamentals of the Internet of Things (IoT) and its real-world applications, paving the way for smarter, interconnected technologies.",
       image: "/iot.png",
     },
   ];
